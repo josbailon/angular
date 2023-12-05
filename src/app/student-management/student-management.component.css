@@ -1,0 +1,63 @@
+/* student-management.component.css */
+div {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ffd1d1;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+}
+
+form {
+  margin-top: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4caf50;
+  color: rgb(78, 58, 58);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+p {
+  margin: 5px 0;
+}
+
+button.edit-btn,
+button.delete-btn {
+  background-color: #337ab7;
+  color: rgb(26, 22, 22);
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button.edit-btn:hover,
+button.delete-btn:hover,
+button[disabled] {
+  background-color: #286090;
+}

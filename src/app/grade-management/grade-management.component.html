@@ -1,0 +1,35 @@
+<!-- grade-management.component.html -->
+
+
+  
+<div class="navbar">
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a routerLink="/student-management" routerLinkActive="active">Gestión de Estudiantes</a>
+  <a routerLink="/professor-management" routerLinkActive="active">Gestión de Profesores</a>
+  <a routerLink="/academic-planning" routerLinkActive="active">Planificación Académica</a>
+  <a routerLink="/academic-events" routerLinkActive="active">Eventos Académicos</a>
+  <a routerLink="/gestion-documentos" routerLinkActive="active">Gestión de Documentos </a>
+</div>
+<div class="container">
+    <h2>Grade Management</h2>
+  
+    <form (submit)="addGrade()">
+      <label>Name:
+        <input type="text" [(ngModel)]="newStudent.name" required>
+      </label>
+  
+      <label>Grade:
+        <input type="number" [(ngModel)]="newStudent.grade" required>
+      </label>
+  
+      <button type="submit">Add Grade</button>
+    </form>
+  
+    <ul>
+      <li *ngFor="let student of students; let i = index">
+        {{ student.name }} - Grade: {{ student.grade }}
+        <button (click)="deleteGrade(i)">Delete</button>
+      </li>
+    </ul>
+  </div>
+  

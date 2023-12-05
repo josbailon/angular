@@ -1,0 +1,39 @@
+<div class="navbar">
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a routerLink="/student-management" routerLinkActive="active">Gestión de Estudiantes</a>
+  <a routerLink="/professor-management" routerLinkActive="active">Gestión de Profesores</a>
+  <a routerLink="/academic-planning" routerLinkActive="active">Planificación Académica</a>
+  <a routerLink="/academic-events" routerLinkActive="active">Eventos Académicos</a>
+  <a routerLink="/gestion-documentos" routerLinkActive="active">Gestión de Documentos </a>
+</div>
+<!-- academic-planning.component.html -->
+
+<div class="container">
+    <form [formGroup]="courseForm" (ngSubmit)="submitCourseForm()">
+      <label>Nombre del Curso:
+        <input type="text" formControlName="courseName" required>
+      </label>
+  
+      <label>Profesor:
+        <select formControlName="professor" required>
+          <option *ngFor="let professor of professors" [value]="professor">{{ professor }}</option>
+        </select>
+      </label>
+  
+      <label>Horario (HH:mm):
+        <input type="text" formControlName="schedule" pattern="^([01]?[0-9]|2[0-3]):[0-5][0-9]$" required>
+      </label>
+  
+      <button type="submit">{{ editingIndex !== null ? 'Editar Curso' : 'Agregar Curso' }}</button>
+    </form>
+  
+    <div *ngFor="let course of plannedCourses; let i = index" class="course-item">
+      <p><strong>Curso:</strong> {{ course.courseName }}</p>
+      <p><strong>Profesor:</strong> {{ course.professor }}</p>
+      <p><strong>Horario:</strong> {{ course.schedule }}</p>
+      <button (click)="editCourse(course, i)">Editar</button>
+      <button (click)="deleteCourse(course)">Borrar</button>
+    </div>
+  </div>
+  
+  

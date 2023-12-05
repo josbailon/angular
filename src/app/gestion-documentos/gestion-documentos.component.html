@@ -1,0 +1,31 @@
+<div class="navbar">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/student-management" routerLinkActive="active">Gestión de Estudiantes</a>
+    <a routerLink="/professor-management" routerLinkActive="active">Gestión de Profesores</a>
+    <a routerLink="/academic-planning" routerLinkActive="active">Planificación Académica</a>
+    <a routerLink="/academic-events" routerLinkActive="active">Eventos Académicos</a>
+    <a routerLink="/gestion-documentos" routerLinkActive="active">Gestión de Documentos </a>
+  </div>
+  <div class="container">
+    <h2>Documentos</h2>
+    <ul>
+      <li *ngFor="let document of documents; let i = index">
+        {{ document.title }} - {{ document.description }}
+        <span *ngIf="document.file">Archivo Adjunto: {{ document.file.name }}</span>
+        <button (click)="deleteDocument(i)">Borrar</button>
+      </li>
+    </ul>
+  
+    <h3>Agregar Nuevo Documento</h3>
+    <form (ngSubmit)="saveDocument()" #documentForm="ngForm">
+      <label>Título: <input [(ngModel)]="newDocument.title" name="title" required></label>
+      <br>
+      <label>Descripción: <textarea [(ngModel)]="newDocument.description" name="description" required></textarea></label>
+      <br>
+      <label>Adjuntar Archivo: <input type="file" (change)="handleFileInput($event)" name="file"></label>
+      <br>
+      <button type="submit" [disabled]="documentForm.invalid">Guardar Documento</button>
+    </form>
+  </div>
+  
+  

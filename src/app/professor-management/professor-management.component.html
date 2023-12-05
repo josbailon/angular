@@ -1,0 +1,59 @@
+<div class="navbar">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/student-management" routerLinkActive="active">Gestión de Estudiantes</a>
+    <a routerLink="/professor-management" routerLinkActive="active">Gestión de Profesores</a>
+    <a routerLink="/academic-planning" routerLinkActive="active">Planificación Académica</a>
+    <a routerLink="/academic-events" routerLinkActive="active">Eventos Académicos</a>
+    <a routerLink="/gestion-documentos" routerLinkActive="active">Gestión de Documentos </a>
+  </div>
+  <div class="dashboard-container">
+<!-- professor-management.component.html -->
+<h2>Teacher List</h2>
+<div *ngFor="let teacher of teachers; let i = index">
+  <div>
+    <span>{{ teacher.name }}</span>
+    <span>{{ teacher.career }}</span>
+    <button (click)="showTeacherDetails(i)">Ver Detalles</button>
+    <button (click)="deleteTeacher(i)">Eliminar</button>
+  </div>
+</div>
+
+<h2>Teacher Details</h2>
+<div *ngIf="selectedTeacher !== undefined">
+  <div>
+    <span>Nombre: {{ selectedTeacher?.name }}</span>
+    <span>Carrera: {{ selectedTeacher?.career }}</span>
+    <span>Descripción: {{ selectedTeacher?.Descripcion }}</span>
+    <img *ngIf="selectedTeacher?.photoUrl" [src]="selectedTeacher?.photoUrl" alt="Profesor" />
+    <button (click)="editTeacherDetails()">Editar Detalles</button>
+  </div>
+
+  <!-- Nuevo div para mostrar detalles dentro -->
+  <div *ngIf="selectedTeacher?.name">
+    <h3>Detalles del Maestro</h3>
+    <p><strong>Nombre:</strong> {{ selectedTeacher?.name }}</p>
+    <p><strong>Carrera:</strong> {{ selectedTeacher?.career }}</p>
+    <p><strong>Descripción:</strong> {{ selectedTeacher?.Descripcion }}</p>
+    <img *ngIf="selectedTeacher?.photoUrl" [src]="selectedTeacher?.photoUrl" alt="Profesor" />
+  </div>
+</div>
+
+<h2>Add Teacher</h2>
+<div>
+  <form #teacherForm="ngForm">
+    <label>Nombre: </label>
+    <input [(ngModel)]="newTeacher.name" name="name" required />
+
+    <label>Carrera: </label>
+    <input [(ngModel)]="newTeacher.career" name="career" required />
+
+    <label>Descripción: </label>
+    <textarea [(ngModel)]="newTeacher.Descripcion" name="descripcion"></textarea>
+
+    <label>Foto URL: </label>
+    <input [(ngModel)]="newTeacher.photoUrl" name="photoUrl" />
+
+    <button (click)="addTeacher()" [disabled]="!teacherForm.form.valid">Agregar Profesor</button>
+  </form>
+</div>
+

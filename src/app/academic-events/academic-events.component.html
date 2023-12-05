@@ -1,0 +1,64 @@
+
+  
+<div class="navbar">
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a routerLink="/student-management" routerLinkActive="active">Gestión de Estudiantes</a>
+  <a routerLink="/professor-management" routerLinkActive="active">Gestión de Profesores</a>
+  <a routerLink="/academic-planning" routerLinkActive="active">Planificación Académica</a>
+  <a routerLink="/academic-events" routerLinkActive="active">Eventos Académicos</a>
+  <a routerLink="/gestion-documentos" routerLinkActive="active">Gestión de Documentos </a>
+</div>
+
+<!-- academic-events.component.html -->
+
+<div class="academic-events-container">
+  <h2>Eventos Académicos</h2>
+
+  <!-- Formulario para la planificación de eventos -->
+  <div class="event-form">
+      <h3>Planificar Nuevo Evento</h3>
+      <form (ngSubmit)="submitEventForm()" #eventForm="ngForm">
+          <label>
+              Título del Evento:
+              <input type="text" name="title" [(ngModel)]="newEvent.title" required>
+              <div *ngIf="eventForm.controls['title']?.hasError('required') && eventForm.controls['title']?.touched" class="error-message">
+                  El título del evento es obligatorio.
+              </div>
+          </label>
+          <label>
+              Descripción:
+              <textarea name="description" [(ngModel)]="newEvent.description" required></textarea>
+              <div *ngIf="eventForm.controls['description']?.hasError('required') && eventForm.controls['description']?.touched" class="error-message">
+                  La descripción del evento es obligatoria.
+              </div>
+          </label>
+          <label>
+              Fecha y Hora:
+              <input type="datetime-local" name="date" [(ngModel)]="newEvent.date" required>
+              <div *ngIf="eventForm.controls['date']?.hasError('required') && eventForm.controls['date']?.touched" class="error-message">
+                  La fecha y hora del evento son obligatorias.
+              </div>
+          </label>
+          <button type="submit" [disabled]="eventForm.invalid">Planificar Evento</button>
+      </form>
+  </div>
+
+  <!-- Mensaje si no hay eventos programados -->
+  <div *ngIf="academicEvents.length === 0" class="no-events-message">
+      <p>No hay eventos académicos programados en este momento.</p>
+  </div>
+
+  <!-- Lista de eventos académicos -->
+  <div *ngFor="let event of academicEvents" class="event-card">
+      <div class="event-info">
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.description }}</p>
+          <p class="event-date">{{ event.date | date:'medium' }}</p>
+      </div>
+      <div class="event-actions">
+          <button (click)="registerForEvent(event)" [disabled]="event.registrationClosed">Registrarse</button>
+          <button (click)="editEvent(event)">Editar</button>
+          <button (click)="deleteEvent(event)">Borrar</button>
+      </div>
+  </div>
+</div>

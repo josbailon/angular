@@ -1,0 +1,51 @@
+
+/* register.component.css */
+
+form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    /* Utilizando clases de Bootstrap */
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    /* Utilizando clases de Bootstrap */
+    background-color: #45a049;
+  }
+  
+  .success-message {
+    /* Utilizando clases de Bootstrap */
+    color: green;
+  }
+  
+  .error-message {
+    /* Utilizando clases de Bootstrap */
+    color: red;
+  }
+  
+  /* Utilizando clases de Bootstrap para el formulario */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  /* Agrega más clases de Bootstrap según tus necesidades */
+  

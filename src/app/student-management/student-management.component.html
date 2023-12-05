@@ -1,0 +1,57 @@
+<div class="navbar">
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  <a routerLink="/student-management" routerLinkActive="active">Gestión de Estudiantes</a>
+  <a routerLink="/professor-management" routerLinkActive="active">Gestión de Profesores</a>
+  <a routerLink="/academic-planning" routerLinkActive="active">Planificación Académica</a>
+  <a routerLink="/academic-events" routerLinkActive="active">Eventos Académicos</a>
+  <a routerLink="/gestion-documentos" routerLinkActive="active">Gestión de Documentos </a>
+</div>
+
+<div *ngFor="let estudiante of estudiantes; let i = index">
+  <p>{{ estudiante.nombre }} - {{ estudiante.matricula }} - {{ estudiante.estado }}</p>
+  <button (click)="eliminarEstudiante(i)">Eliminar</button>
+  <button (click)="editarEstudiante(i)">Editar</button>
+</div>
+
+<!-- Formulario de Editar Estudiante -->
+<div *ngIf="editarEstudianteIndex !== null">
+  <form (ngSubmit)="guardarEdicion()">
+    <h2>Editar Estudiante</h2>
+    <label>Nombre: </label>
+    <input [(ngModel)]="estudiantes[editarEstudianteIndex].nombre" /><br />
+
+    <label>Matrícula: </label>
+    <input [(ngModel)]="estudiantes[editarEstudianteIndex].matricula" /><br />
+
+    <label>Estado: </label>
+    <select [(ngModel)]="estudiantes[editarEstudianteIndex].estado">
+      <option value="regular">Regular</option>
+      <option value="irregular">Irregular</option>
+      <option value="tercera-matricula">Tercera Matrícula</option>
+    </select><br />
+
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Formulario de Agregar Estudiante -->
+<div *ngIf="editarEstudianteIndex === null">
+  <div class="agregar-estudiante-form">
+    <h2>Agregar Estudiante</h2>
+    <label>Nombre: </label>
+    <input [(ngModel)]="nuevoEstudiante.nombre" /><br />
+
+    <label>Matrícula: </label>
+    <input [(ngModel)]="nuevoEstudiante.matricula" /><br />
+
+    <label>Estado: </label>
+    <select [(ngModel)]="nuevoEstudiante.estado">
+      <option value="regular">Regular</option>
+      <option value="irregular">Irregular</option>
+      <option value="tercera-matricula">Tercera Matrícula</option>
+    </select><br />
+
+    <button (click)="agregarEstudiante()">Agregar</button>
+  </div>
+</div>

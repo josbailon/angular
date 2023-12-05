@@ -1,0 +1,71 @@
+/* academic-events.component.css */
+
+.academic-events-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.event-form {
+  margin-bottom: 20px;
+}
+
+.event-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Añadido estilo para input en el formulario */
+.event-form input,
+.event-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Ajustes en el tamaño de la textarea */
+.event-form textarea {
+  height: 80px; /* Ajusta la altura según tu preferencia */
+}
+
+.event-card {
+  border: 1px solid #ddd;
+  padding: 15px; /* Aumenté el padding para un aspecto más espaciado */
+  margin-bottom: 20px; /* Aumenté el margen inferior para separar los eventos */
+  border-radius: 8px; /* Añadido border-radius para esquinas redondeadas */
+}
+
+.event-info h3 {
+  margin-top: 0;
+}
+
+.event-date {
+  font-style: italic;
+  color: #555; /* Cambiado el color para mejorar la legibilidad */
+}
+
+.event-actions button {
+  margin-right: 10px;
+  padding: 8px 12px; /* Añadido padding para botones más atractivos */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+}
+
+.event-actions button:hover {
+  background-color: #45a049;
+}
+
+.no-events-message {
+  margin-top: 20px;
+  text-align: center;
+  color: #555; /* Cambiado el color para mejorar la legibilidad */
+}
+
+.error-message {
+  color: red;
+  font-size: 14px; /* Aumenté el tamaño de la fuente para mayor visibilidad */
+  margin-top: 8px; /* Aumenté el margen superior para separación */
+}
